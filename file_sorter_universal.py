@@ -21,21 +21,16 @@ for extension in range(len(users_files)):
         raw_formatappend = [os.path.splitext(users_files[extension])[1]]
 
 
-removed_extensions = [os.path.splitext(File)[0] for File in os.listdir()]
-##for each file in the directory, strip its extension, then append index[0] to removed_extensions
-uniques = {filename for filename in removed_extensions}
-#print(uniques)
+removed_extensions = [os.path.splitext(File)[0] for File in os.listdir()] ##for each file in the directory, strip its extension, then append index[0] to removed_extensions
+
+uniques = {filename for filename in removed_extensions} #removing duplicates
 
 for e in uniques:
     if e in removed_extensions:
-        removed_extensions.remove(e)
-
-#print(removed_extensions)        
+        removed_extensions.remove(e)       
 
 #universal file extensions implementation for different cameras
 cleaned_selections = [removed_extensions[i]+raw_formatappend[0] for i in range(len(removed_extensions))]
-
-#print(cleaned_selections)
 
 try:
     os.makedirs('Client Choices')
